@@ -37,4 +37,4 @@ For more information on how ROSA's Upgrade Service works, please see the [Red Ha
     ![OCM - Update Confirm](../assets/images/ocm-update-confirm.png){ align=center }
     ![OCM - Update Close](../assets/images/ocm-update-close.png){ align=center }
 
-    Congratulations! You've successfully scheduled an upgrade of your cluster for tomorrow at this time. If you finish quickly, feel free to explore the setting tab further and reach out to the workshop instructors with any questions. 
+    Congratulations! You've successfully scheduled an upgrade of your cluster for tomorrow at this time. If you finish quickly, feel free to explore the *settings* tab further and reach out to the workshop instructors with any questions. 
