@@ -11,9 +11,9 @@ repo_url: https://github.com/bizquigs/rosa-workshop-content
 # Nav Menu Definition
 nav:
   - Welcome: index.md
-  - Environment Setup: 100-setup/1-environment.md
-  - Create ROSA Cluster: 100-setup/2-cluster-creation.md
-  - Access Your Cluster: 100-setup/3-access-cluster.md
+  - Environment Setup: 100-setup/1-fbi-environment.md
+#  - Create ROSA Cluster: 100-setup/2-cluster-creation.md
+#  - Access Your Cluster: 100-setup/3-access-cluster.md
   - Day Two ROSA Operations:
 #    - Configuring OAuth2 authentication: 200-ops/idp/aad.md
     - Managing Cluster Upgrades: 200-ops/upgrades.md
