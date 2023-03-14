@@ -15,4 +15,5 @@ In this guide we will cover the following:
 
 After these steps, you should have a cluster running in a RHPDS AWS environment and be able to access your cluster, as cluster-admin, from both the UI and the command line.
 !!! note
+
 We will return to this doc later when it's time to delete the cluster and clean up our RHPDS environments. 
