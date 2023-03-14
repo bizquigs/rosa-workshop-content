@@ -10,9 +10,9 @@ For more information on how ROSA's Upgrade Service works, please see the [Red Ha
 
     It is important to note, that even though we are upgrading via the OpenShift Cluster Manager, this can also be done via the ROSA CLI. 
 
-1. Log back into the OpenShift Cluster Manager by [clicking here](https://console.redhat.com/openshift). If you need to reauthenticate, use the credentials provided by the workshop team. 
+1. Log back into the OpenShift Cluster Manager by [clicking here](https://console.redhat.com/openshift). If you need to reauthenticate, make sure you use the same credentials you used for RHPDS. 
 
-1. In the *Clusters* section, locate your cluster and click on it. 
+1. In the *Clusters* section, locate your cluster and click on it. You can shorten the list of available clusters by toggling the "View only my clusters" button at the top of the page.
 
     ![OCM - Cluster List](../assets/images/ocm-cluster-list.png){ align=center }
 
@@ -37,4 +37,4 @@ For more information on how ROSA's Upgrade Service works, please see the [Red Ha
     ![OCM - Update Confirm](../assets/images/ocm-update-confirm.png){ align=center }
     ![OCM - Update Close](../assets/images/ocm-update-close.png){ align=center }
 
-    Congratulations! You've successfully scheduled an upgrade of your cluster for tomorrow at this time. While the workshop environment will be deleted before then, you now have the experience to schedule upgrades in the future.
+    Congratulations! You've successfully scheduled an upgrade of your cluster for tomorrow at this time. If you finish quickly, feel free to explore the setting tab further and reach out to the workshop instructors with any questions. 
