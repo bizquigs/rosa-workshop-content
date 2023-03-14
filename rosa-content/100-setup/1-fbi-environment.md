@@ -8,6 +8,10 @@ In this guide we will cover the following:
 
 - Using RHPDS to deploy an AWS Environment (link available [here](https://docs.google.com/document/d/1u9wDEWXlX8r5gJiUcjBoiVllDMCl9KvPyxJ8jOkuwcI/edit#heading=h.2ym2u1bfh9bh){:target="_blank"})
 - Installation and Deployment of an STS ROSA Cluster (link available [here](https://docs.google.com/document/d/1u9wDEWXlX8r5gJiUcjBoiVllDMCl9KvPyxJ8jOkuwcI/edit#){:target="_blank"})
+!!! warning "Do not choose the latest version"
+
+    As part of this workshop, we're going to walk through the process of upgrading a cluster. In order to do this, select the next-to-latest version of ROSA during deployment so you have the option to upgrade.
 - Accessing the ROSA Cluster (link available [here](https://docs.google.com/document/d/1u9wDEWXlX8r5gJiUcjBoiVllDMCl9KvPyxJ8jOkuwcI/edit#heading=h.w1lzwyhnr30q){:target="_blank"})
 
-We will return to this doc later when it's time to delete the cluster and clean up our RHPDS environments. 
+After these steps, you should have a cluster running in a RHPDS AWS environment and be able to access your cluster, as cluster-admin, from both the UI and the command line.
+### We will return to this doc later when it's time to delete the cluster and clean up our RHPDS environments. 
