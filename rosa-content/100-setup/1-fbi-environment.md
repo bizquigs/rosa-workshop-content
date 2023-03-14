@@ -8,3 +8,6 @@ In this guide we will cover the following:
 
 - Using RHPDS to deploy an AWS Environment (link available [here](https://docs.google.com/document/d/1u9wDEWXlX8r5gJiUcjBoiVllDMCl9KvPyxJ8jOkuwcI/edit#heading=h.2ym2u1bfh9bh){:target="_blank"})
 - Installation and Deployment of an STS ROSA Cluster (link available [here](https://docs.google.com/document/d/1u9wDEWXlX8r5gJiUcjBoiVllDMCl9KvPyxJ8jOkuwcI/edit#){:target="_blank"})
+- Accessing the ROSA Cluster (link available [here](https://docs.google.com/document/d/1u9wDEWXlX8r5gJiUcjBoiVllDMCl9KvPyxJ8jOkuwcI/edit#heading=h.w1lzwyhnr30q){:target="_blank"})
+
+We will return to this doc later when it's time to delete the cluster and clean up our RHPDS environments. 
