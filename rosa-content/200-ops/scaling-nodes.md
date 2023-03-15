@@ -8,22 +8,24 @@ Throughout this workshop you will need to use your individual cluster name in th
 
     rosa list clusters
 
-This will return the Cluster ID, the Cluster Name, and the State. 
+This will return the Cluster ID, the Cluster Name, and the State. If you would like to copy the commands below, set an environment variable using your cluster name thusly:
 
+    export CLUSTER="your_cluster_name"
+   
 ## Scaling worker nodes
 ### Via the CLI
 
 1. First, let's see what MachinePools already exist in our cluster. To do so, run the following command:
 
     ```bash
-    rosa list machinepools -c ${WS_USER/_/-}
+    rosa list machinepools -c $CLUSTER
     ```
 
     Your output should look similar to:
 
     ```{.text .no-copy}
-    ID       AUTOSCALING  REPLICAS  INSTANCE TYPE  LABELS    TAINTS    AVAILABILITY ZONES                    SUBNETS    SPOT INSTANCES
-    Default  No           3         m5.xlarge                          {{ aws_region }}a, {{ aws_region }}b, {{ aws_region }}c               N/A
+    ID       AUTOSCALING  REPLICAS  INSTANCE TYPE  LABELS    TAINTS    AVAILABILITY ZONES     SUBNETS    SPOT INSTANCES
+    Default  No           2         m5.xlarge                          us-east-1a                             N/A
     ```
 
 1. Now, let's take a look at the machines inside of the ROSA cluster that have been created according to the instructions provided by the above MachinePools. To do so, run the following command:
