@@ -8,7 +8,7 @@ The cluster autoscaler adjusts the size of an ROSA cluster to meet the resource 
 
     It is important to note, that even though we are enabling autoscaling via the OpenShift Cluster Manager, this can also be done via the ROSA CLI. 
 
-1. Log back into the OpenShift Cluster Manager by [clicking here](https://console.redhat.com/openshift). If you need to reauthenticate, use the credentials provided by the workshop team. 
+1. Log back into the OpenShift Cluster Manager by [clicking here](https://console.redhat.com/openshift). If you need to reauthenticate, use your Red Hat SSO credentials. 
 
 1. In the Cluster section, locate your cluster and click on it. 
 
@@ -96,7 +96,7 @@ Now let's test the cluster autoscaler and see it in action. To do so, we'll depl
     oc -n autoscale-ex get pods
     ```
 
-    Your output will look something like this:
+    Your output will look something like this, except like, a stupid number:
 
     ```{.text .no-copy}
     NAME                     READY   STATUS    RESTARTS   AGE
