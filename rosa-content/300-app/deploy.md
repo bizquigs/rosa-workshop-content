@@ -14,7 +14,7 @@ It's time for us to put our cluster to work and deploy a workload. We're going t
 
     ```bash
     aws dynamodb create-table \
-    --table-name ${WS_USER}-microsweeper-scores \
+    --table-name $CLUSTER-microsweeper-scores \
     --attribute-definitions AttributeName=name,AttributeType=S \
     --key-schema AttributeName=name,KeyType=HASH \
     --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
@@ -73,12 +73,12 @@ Our application uses the AWS SDK to make connections to Amazon DynamoDB. While w
             {
                 "Effect": "Allow",
                 "Principal": {
-                    "Federated": "arn:aws:iam::$(aws sts get-caller-identity --query 'Account' --output text):oidc-provider/$(rosa describe cluster -c ${WS_USER/_/-} -o json | jq -r .aws.sts.oidc_endpoint_url | sed -e 's/^https:\/\///')" 
+                    "Federated": "arn:aws:iam::$(aws sts get-caller-identity --query 'Account' --output text):oidc-provider/$(rosa describe cluster -c $CLUSTER -o json | jq -r .aws.sts.oidc_endpoint_url | sed -e 's/^https:\/\///')" 
                 },
                 "Action": "sts:AssumeRoleWithWebIdentity",
                 "Condition": {
                     "StringEquals": {
-                        "$(rosa describe cluster -c ${WS_USER/_/-} -o json | jq -r .aws.sts.oidc_endpoint_url | sed -e 's/^https:\/\///'):sub": "system:serviceaccount:microsweeper-ex:microsweeper" 
+                        "$(rosa describe cluster -c $CLUSTER -o json | jq -r .aws.sts.oidc_endpoint_url | sed -e 's/^https:\/\///'):sub": "system:serviceaccount:microsweeper-ex:microsweeper" 
                     }
                 }
             }
