@@ -2,6 +2,36 @@
 
 It's time for us to put our cluster to work and deploy a workload. We're going to build an example Java application, [microsweeper](https://github.com/redhat-mw-demos/microsweeper-quarkus/tree/ROSA){:target="_blank"}, using [Quarkus](https://quarkus.io/){:target="_blank"} (a Kubernetes-native Java stack) and [Amazon DynamoDB](https://aws.amazon.com/dynamodb){:target="_blank"}. We'll then deploy the application to our ROSA cluster and connect to the database over AWS's secure network.
 
+For this task, you'll need the Quarkus CLI. If you have it already, you should tell people all about it, because they're totally interested. If you don't, copy the following command in your linux machine:
+
+```bash
+curl -Ls https://sh.jbang.dev | bash -s - trust add https://repo1.maven.org/maven2/io/quarkus/quarkus-cli/
+curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --force quarkus@quarkusio
+```
+
+To make things easy, we're also going to create an environment variable for our AWS region, since we're not all using the same. If your cluster is in **us-east-1** use this:
+
+```bash
+export AWS_DEFAULT_REGION=us-east-1
+```
+
+for **us-east-2** use this:
+
+```bash
+export AWS_DEFAULT_REGION=us-east-2
+```
+
+and since quarkus requires us to open a new shell, it's likely your $CLUSTER varible perished. Well let's fix that.
+
+```bash
+export CLUSTER="your_cluster_name"
+```
+We will also need Apache Maven for this step. If you don't have it, the install command is simple:
+
+```bash
+sudo dnf install maven
+```
+
 ## Create an Amazon DynamoDB instance
 
 1. First, let's create a namespace (also known as a project in OpenShift). To do so, run the following command:
@@ -127,7 +157,7 @@ Now that we've got a DynamoDB instance up and running and our IRSA configuration
     quarkus ext add openshift
     ```
 
-1. Now, we'll configure Quarkus to use the DynamoDB instance that we created earlier in this section. To do so, we'll create an `application.properties` file using by running the following command:
+1. Now, we'll configure Quarkus to use the DynamoDB instance that we created earlier in this section. To do so, we'll create an `application.properties` file using by running the following command (make sure you're in the rosa-workshop-app directory):
 
     ```xml
     cat <<EOF > ./src/main/resources/application.properties
@@ -135,7 +165,7 @@ Now that we've got a DynamoDB instance up and running and our IRSA configuration
     %dev.quarkus.dynamodb.endpoint-override=http://localhost:8000
     %prod.quarkus.openshift.env.vars.aws_region=${AWS_DEFAULT_REGION}
     %prod.quarkus.dynamodb.aws.credentials.type=default
-    dynamodb.table=${WS_USER}-microsweeper-scores
+    dynamodb.table=${CLUSTER}-microsweeper-scores
 
     # OpenShift configurations
     %prod.quarkus.kubernetes-client.trust-certs=true
