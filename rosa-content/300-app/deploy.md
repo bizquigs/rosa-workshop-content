@@ -90,19 +90,19 @@ Our application uses the AWS SDK to make connections to Amazon DynamoDB. While w
 1. Next, let's take the trust policy document and use it to create a role. To do so, run the following command:
 
     ```bash
-    aws iam create-role --role-name ${WS_USER}_irsa --assume-role-policy-document file://trust-policy.json --description "${WS_USER} IRSA Role"
+    aws iam create-role --role-name ${CLUSTER}_irsa --assume-role-policy-document file://trust-policy.json --description "$CLUSTER IRSA Role"
     ```
-
+You'll get a nice return from that if it goes well. 
 1. Next, let's attach the `AmazonDynamoDBFullAccess` policy to our newly created IAM role. This will allow our application to read and write to our Amazon DynamoDB table. To do so, run the following command:
 
     ```bash
-    aws iam attach-role-policy --role-name ${WS_USER}_irsa --policy-arn=arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+    aws iam attach-role-policy --role-name ${CLUSTER}_irsa --policy-arn=arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
     ```
 
 1. Finally, let's annotate the service account with the ARN of the IAM role we created above. To do so, run the following command:
 
     ```bash
-    oc -n microsweeper-ex annotate serviceaccount microsweeper eks.amazonaws.com/role-arn=arn:aws:iam::$(aws sts get-caller-identity --query 'Account' --output text):role/${WS_USER}_irsa
+    oc -n microsweeper-ex annotate serviceaccount microsweeper eks.amazonaws.com/role-arn=arn:aws:iam::$(aws sts get-caller-identity --query 'Account' --output text):role/${CLUSTER}_irsa
     ```
 
 ## Build and deploy the Microsweeper app
