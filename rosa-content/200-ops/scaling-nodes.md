@@ -28,7 +28,7 @@ ID       AUTOSCALING  REPLICAS  INSTANCE TYPE  LABELS    TAINTS    AVAILABILITY 
 Default  No           3         m5.xlarge                          {{ aws_region }}a, {{ aws_region }}b, {{ aws_region }}c               N/A
 ```
 
-1. Now, let's take a look at the machines inside of the ROSA cluster that have been created according to the instructions provided by the above MachinePools. To do so, run the following command:
+2. Now, let's take a look at the machines inside of the ROSA cluster that have been created according to the instructions provided by the above MachinePools. To do so, run the following command:
 
     ```bash
     oc -n openshift-machine-api get machine
@@ -49,7 +49,7 @@ Default  No           3         m5.xlarge                          {{ aws_region
     user1-mobbws-6sj5f-worker-{{ aws_region }}c-w8jl6   Running   m5.xlarge    {{ aws_region }}   {{ aws_region }}c   18h
     ```
 
-1. Now that we know that we have three worker nodes, let's create a MachinePool to add a new worker node using the ROSA CLI. To do so, run the following command for **us-east-1**:
+3. Now that we know that we have three worker nodes, let's create a MachinePool to add a new worker node using the ROSA CLI. To do so, run the following command for **us-east-1**:
 
     ```bash
     rosa create machinepool -c $CLUSTER --availability-zone us-east-1a --replicas 1 --name workshop --instance-type m5.xlarge
@@ -71,7 +71,7 @@ Default  No           3         m5.xlarge                          {{ aws_region
 
     This command adds a single m5.xlarge instance to the selected availability zone. 
 
-1. Now, let's scale up our selected MachinePool from one to two machines. To do so, run the following command:
+4. Now, let's scale up our selected MachinePool from one to two machines. To do so, run the following command:
 
     ```bash
     rosa update machinepool -c $CLUSTER --replicas 2 workshop
@@ -83,7 +83,7 @@ Default  No           3         m5.xlarge                          {{ aws_region
     I: Updated machine pool 'workshop' on cluster 'user1-mobbws'
     ```
 
-1. Now that we've scaled the MachineSet to two machines, we can see that the machine is already being created. First, let's quickly check the output of this command, which lists the machinesets:
+5. Now that we've scaled the MachineSet to two machines, we can see that the machine is already being created. First, let's quickly check the output of this command, which lists the machinesets:
 
     ```bash
     oc -n openshift-machine-api get machinesets
@@ -127,13 +127,13 @@ Default  No           3         m5.xlarge                          {{ aws_region
     user1-mobbws-6sj5f-workshop-{{ aws_region }}a-xh584    Running       m5.xlarge    {{ aws_region }}   {{ aws_region }}a   3m43s
     ```
 
-1. Now, let's scale the cluster back down to a total of 4 worker nodes by scaling down the "Workshop" Machine Pool. To do so, run the following command:
+6. Now, let's scale the cluster back down to a total of 4 worker nodes by scaling down the "Workshop" Machine Pool. To do so, run the following command:
 
     ```
     rosa update machinepool -c $CLUSTER --replicas 1 workshop
     ```
 
-1. Now that we've scaled the MachineSet back down to one machine, we can see the change reflected in the cluster almost immediately. Let's quickly check the output of the same command we ran in step 5:
+7. Now that we've scaled the MachineSet back down to one machine, we can see the change reflected in the cluster almost immediately. Let's quickly check the output of the same command we ran in step 5:
 
     ```bash
     oc -n openshift-machine-api get machinesets
@@ -152,7 +152,7 @@ Default  No           3         m5.xlarge                          {{ aws_region
     user1-mobbws-6sj5f-workshop-{{ aws_region }}a    1         1         1       1           4m36s
     ```
 
-1. Now, let's scale the cluster back down to a total of 3 worker nodes by deleting the "Workshop" Machine Pool. To do so, run the following command:
+8. Now, let's scale the cluster back down to a total of 3 worker nodes by deleting the "Workshop" Machine Pool. To do so, run the following command:
 
     ```
     rosa delete machinepool -c $CLUSTER workshop --yes
