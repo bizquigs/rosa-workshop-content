@@ -1,6 +1,6 @@
 # Applying Network Policies to lock down networking
 
-You should have two application deployed in your cluster, the `microsweeper` application deployed in the `Deploy an App` portion of this workshop and the `bgd` app deployed in the `gitops` portion of this workshop. Each live in their own named Projects (or namespace in Kubernetes-speak).
+You should have two application deployed in your cluster, the `microsweeper` application deployed in the `Deploy the App` portion of this workshop and the `bgd` app deployed in the `Using OpenShift GitOps` portion of this workshop. Each live in their own named Projects (or namespace in Kubernetes-speak).
 
 1. Fetch the IP address of the `microsweeper` Pod
 
@@ -116,6 +116,6 @@ You should have two application deployed in your cluster, the `microsweeper` app
     oc -n bgd exec -ti deployment/argocd-server -- curl $MS_IP:8080 | head
     ```
 
-    This should fail.  Hit Ctrl-C to avoid waiting for a timeout.
+    This should fail. You've probably already looked at it super long wondering if you fat thumbed the command. How could you? You copied it from this very page. Hit Ctrl-C to avoid waiting for a timeout.
 
 !!! info "For information on setting default network policies for new projects you can read the OpenShift documentation on [modifying the default project template](https://docs.openshift.com/container-platform/4.10/networking/network_policy/default-network-policy.html)."
