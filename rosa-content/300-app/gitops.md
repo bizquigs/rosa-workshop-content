@@ -39,7 +39,7 @@
 1. Wait for ArgoCD to be ready
 
     ```bash
-    kubectl rollout status deploy/argocd-server
+    oc rollout status deploy/argocd-server
     ```
 
 1. Apply the gitops configuration
@@ -110,7 +110,7 @@
 
     ![](./images/app_blue.png)
 
-1. Meanwhile check ArgoCD it should show the application as out of sync. Click the Sync button to have it revert the change you made in OpenShift
+1. Meanwhile check ArgoCD it should show the application as out of sync. Click the Sync button to have it revert the change you made in OpenShift. This will bring up a dialogue to the right, observe the multiple options for your own education, and then cick "synchronize".
 
     ![](./images/sync_bgd.png)
 
