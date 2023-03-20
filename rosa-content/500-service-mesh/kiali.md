@@ -1,11 +1,11 @@
 ## Kiali Web Console
 ### Obtain the address for the Kiali web console.
 
-1. **Browse** to the OpenShift Container Platform web console.
+1. **Browse** to the OpenShift Container Platform web console, Administrator view.
 
-1. **Navigate** to project to Networking → Routes.
+1. **Navigate** to Networking → Routes.
 
-1. **Click** on the Routes tab, **select** the Service Mesh control plane project, for example `istio-system`, from the Namespace menu.
+1. **Click** on the Routes tab, **select** the Service Mesh control plane project, for example `istio-system`, from the Project menu.
 ![Project Network Route](../assets/images/click-network-under-project-view-kiali-route.PNG)
 
 1. The Location column displays the linked address for each route.
