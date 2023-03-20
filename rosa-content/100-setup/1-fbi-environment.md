@@ -8,6 +8,9 @@ In this guide we will cover the following:
 
 - Using RHPDS to deploy an AWS Environment (link available [here](https://docs.google.com/document/d/1u9wDEWXlX8r5gJiUcjBoiVllDMCl9KvPyxJ8jOkuwcI/edit#heading=h.2ym2u1bfh9bh){:target="_blank"})
 - Installation and Deployment of an STS ROSA Cluster (link available [here](https://docs.google.com/document/d/1u9wDEWXlX8r5gJiUcjBoiVllDMCl9KvPyxJ8jOkuwcI/edit#){:target="_blank"})
+!!! note "Command-line interface"
+    You will need a CLI to perform tasks in this workshop. You may choose to use a terminal client on your laptop, but we recommend the AWS Cloudshell which is an in-browser terminal that you will have access to once your RHDP environment is provisioned.
+    
 !!! warning "Do not choose the latest version"
 
     As part of this workshop, we're going to walk through the process of upgrading a cluster. In order to do this, select the next-to-latest version of the 4.11 series during deployment so you have the option to upgrade. This should mean choosing version 4.11.29 at install time so that we can upgrade to 4.11.30.
