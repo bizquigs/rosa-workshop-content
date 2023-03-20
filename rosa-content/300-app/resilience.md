@@ -34,7 +34,14 @@ In this section of the workshop, we will deploy an application to an ROSA cluste
 
     In that case, you'd visit `http://frontend-js-resilience-ex.apps.user1-mobbws.2ep4.p1.openshiftapps.com` in your browser.
 
-1. Initially, this application is deployed with only one pod. In the event a worker node goes down or the pod crashes, there will be an outage of the application. To prevent that, let's scale the number of instances of our applications up to three. To do so, run the following command:
+1. Initially, this application is deployed with only one pod. You can confirm this by running the following command:
+
+```bash
+oc -n resilience-ex get pods \
+ -l deployment=frontend-js 
+```
+
+In the event a worker node goes down or the pod crashes, there will be an outage of the application. To prevent that, let's scale the number of instances of our applications up to three. To do so, run the following command:
 
     ```bash
     oc -n resilience-ex scale deployment \
@@ -159,7 +166,7 @@ In this exercise we will scale the `frontend-js` application based on CPU utiliz
 
     ```{.txt .no-copy}
     NAME              REFERENCE                TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
-    frontend-js-cpu   Deployment/frontend-js   0%/50%   2         4         3          45s
+    frontend-js-cpu   Deployment/frontend-js   0%/50%   2         2         4          2      45s
     ```
 
 1. Next, let's generate some load against the `frontend-js` application. To do so, run the following command:
@@ -170,7 +177,7 @@ In this exercise we will scale the `frontend-js` application based on CPU utiliz
     ```
 
 
-1. Wait for a minute and then kill the siege command (by hitting CTRL and c on your keyboard). Then immediately check the status of Horizontal Pod Autoscaler. To do so, run the following command:
+1. If you don't have siege installed, follow the prompts and accept the defaults. Wait for a couple minutes and then kill the siege command (by hitting CTRL and c on your keyboard). Then immediately check the status of Horizontal Pod Autoscaler. To do so, run the following command:
 
     ```bash
     oc -n resilience-ex get horizontalpodautoscaler/frontend-js-cpu
@@ -183,7 +190,7 @@ In this exercise we will scale the `frontend-js` application based on CPU utiliz
     frontend-js-cpu   Deployment/frontend-js   113%/50%   2         4         4          3m13s
     ```
 
-    This means you are now running 4 replicas, instead of the original three that we started with.
+    This means you are now running 4 replicas, instead of the original three that we started with. Notice also the percentage difference under "targets". 
 
 
 1. Once you've killed the seige command, the traffic going to `frontend-js` service will cool down and after a 60 second cool down period, your application's replica count will drop back down to two. To demonstrate this, run the following command:
@@ -201,3 +208,5 @@ In this exercise we will scale the `frontend-js` application based on CPU utiliz
     frontend-js-cpu   Deployment/frontend-js   8%/50%    2         4         3          7m16s
     frontend-js-cpu   Deployment/frontend-js   0%/50%    2         4         2          7m31s
     ```
+
+This concludes this portion of the workshop.
