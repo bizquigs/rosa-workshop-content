@@ -1,6 +1,6 @@
 ## Deploying Workloads
 
-1. Create project.
+1. Create a project and label it.
 
     ```bash
     oc new-project bookinfo
