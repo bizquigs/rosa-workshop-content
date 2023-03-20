@@ -54,7 +54,7 @@ Based on the open source Istio project, Red Hat OpenShift Service Mesh adds a tr
     ```bash
     oc get pods -n istio-system -w
     ```
-    You should see output similar to the following:
+    It will take a minute, but eventually you should see output similar to the following:
 
     ```{.text .no-copy}
     NAME                                   READY   STATUS    RESTARTS   AGE
