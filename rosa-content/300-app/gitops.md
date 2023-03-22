@@ -13,26 +13,35 @@
 1. Deploy ArgoCD into your project
 
     ```bash
-    cat <<EOF | oc apply -f -
-    apiVersion: argoproj.io/v1alpha1
-    kind: ArgoCD
-    metadata:
-      name: argocd
-    spec:
-      dex:
-        openShiftOAuth: true
-      rbac:
-        defaultPolicy: "role:readonly"
-        policy: "g, system:authenticated, role:admin"
-        scopes: "[groups]"
-      server:
-        insecure: true
-        route:
-          enabled: true
-          tls:
-            insecureEdgeTerminationPolicy: Redirect
-            termination: edge
-    EOF
+   cat <<EOF | oc apply -f -
+   apiVersion: argoproj.io/v1alpha1
+   kind: ArgoCD
+   metadata:
+     name: argocd
+   spec:
+     sso:
+       dex:
+         openShiftOAuth: true
+         resources:
+           limits:
+             cpu: 500m
+             memory: 256Mi
+           requests:
+             cpu: 250m
+             memory: 128Mi
+       provider: dex
+     rbac:
+       defaultPolicy: "role:readonly"
+       policy: "g, system:authenticated, role:admin"
+       scopes: "[groups]"
+     server:
+       insecure: true
+       route:
+         enabled: true
+         tls:
+           insecureEdgeTerminationPolicy: Redirect
+           termination: edge
+   EOF
     ```
 
 
