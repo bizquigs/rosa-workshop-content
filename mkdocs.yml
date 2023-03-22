@@ -33,7 +33,7 @@ nav:
     - Deploy Workloads: 500-service-mesh/deploy-workload.md
     - Deploy Weighted Load Balancing: 500-service-mesh/weighted-routing.md
     - Access Kiali Dashboard: 500-service-mesh/kiali.md
-#  - Extra Credit: 100-setup/extra-credit.md
+  - Extra Credit: 100-setup/extra-credit.md
 # Theme Configuration
 theme:
   features:
