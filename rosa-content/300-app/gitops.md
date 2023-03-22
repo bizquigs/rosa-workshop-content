@@ -12,7 +12,7 @@
 
 1. Deploy ArgoCD into your project
 
-    ```bash
+   ```bash
    cat <<EOF | oc apply -f -
    apiVersion: argoproj.io/v1alpha1
    kind: ArgoCD
@@ -42,7 +42,7 @@
            insecureEdgeTerminationPolicy: Redirect
            termination: edge
    EOF
-    ```
+   ```
 
 
 1. Wait for ArgoCD to be ready
