@@ -36,17 +36,17 @@ In this section of the workshop, we will deploy an application to an ROSA cluste
 
 1. Initially, this application is deployed with only one pod. You can confirm this by running the following command:
 
-```bash
-oc -n resilience-ex get pods \
- -l deployment=frontend-js 
-```
+    ```bash
+    oc -n resilience-ex get pods \
+     -l deployment=frontend-js 
+    ```
 
-In the event a worker node goes down or the pod crashes, there will be an outage of the application. To prevent that, let's scale the number of instances of our applications up to three. To do so, run the following command:
+    In the event a worker node goes down or the pod crashes, there will be an outage of the application. To prevent that, let's scale the number of           instances of our applications up to three. To do so, run the following command:
 
-```bash
-oc -n resilience-ex scale deployment \
-frontend-js --replicas=3
-```
+    ```bash
+    oc -n resilience-ex scale deployment \
+    frontend-js --replicas=3
+    ```
 
 1. Next, check to see that the application has scaled. To do so, run the following command to see the pods.
 Then check that it has scaled
